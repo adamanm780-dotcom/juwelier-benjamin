@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ──────────────────────────────────────── */
+:root {
+  --gold:          #C9A84C;
+  --gold-light:    #F0D678;
+  --gold-metallic: #D4AF5B;
+  --gold-dark:     #8A6D14;
+  --black:         #080808;
+  --ebony:         #0F0F0F;
+  --surface-1:     #161616;
+  --surface-2:     #1E1E1E;
+  --surface-3:     #262626;
+  --cream:         #F2EDE4;
+  --muted:         #666;
+  --muted-light:   #999;
+}
+
+/* ─── Base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) var(--black);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold-dark), var(--gold));
+  border-radius: 3px;
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Typography Utilities ───────────────────────────────── */
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C9A84C 0%, #F0D678 35%, #D4AF5B 55%, #C9A84C 80%, #8A6D14 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #8A6D14 0%, #C9A84C 25%, #F0D678 50%, #C9A84C 75%, #8A6D14 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.section-label {
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ─── Gold Divider Line ──────────────────────────────────── */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.gold-line-left {
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* ─── Section Spacing ────────────────────────────────────── */
+.section-py {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .section-py {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+}
+
+/* ─── Gold Button ────────────────────────────────────────── */
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: linear-gradient(135deg, #C9A84C, #F0D678, #C9A84C);
+  background-size: 200% auto;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.5s, box-shadow 0.3s, transform 0.2s;
+  overflow: hidden;
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
+}
+
+/* ─── Card Base ──────────────────────────────────────────── */
+.luxury-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  backdrop-filter: blur(4px);
+  transition: all 0.4s ease;
+}
+
+.luxury-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(201, 168, 76, 0.35);
+  box-shadow: 0 0 40px rgba(201, 168, 76, 0.1);
+  transform: translateY(-3px);
+}
+
+/* ─── Overline decoration ────────────────────────────────── */
+.overline-gold::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 1rem;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.25); }
+  50%       { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0); }
+}
+
+/* ─── Selection ──────────────────────────────────────────── */
+::selection {
+  background: rgba(201, 168, 76, 0.25);
+  color: var(--cream);
+}
+
+/* ─── Focus Ring ─────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ─── Gold Ripple Wave ───────────────────────────────────── */
+.ripple-ring {
+  position:       absolute;
+  left:           50%;
+  top:            50%;
+  width:          40px;
+  height:         40px;
+  border-radius:  50%;
+  border:         1px solid rgba(201, 168, 76, 0.65);
+  box-shadow:     0 0 10px rgba(201, 168, 76, 0.12);
+  transform:      translate(-50%, -50%) scale(0.4);
+  opacity:        0;
+  pointer-events: none;
+  animation:      ripple-wave 1.7s cubic-bezier(0.1, 0.5, 0.35, 1) forwards;
+}
+
+@keyframes ripple-wave {
+  0%   { transform: translate(-50%, -50%) scale(0.4);  opacity: 0.7; }
+  40%  { opacity: 0.35; }
+  100% { transform: translate(-50%, -50%) scale(24);   opacity: 0;   }
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
