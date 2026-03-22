@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
 import { registerCollisionRect, unregisterCollisionRect } from '@/lib/collisionRects'
 
 export default function HeroSection() {
@@ -44,7 +43,8 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#080808]"
+      style={{ isolation: 'isolate' }}
       aria-label="Hero – Juwelier Benjamin"
     >
       {/* Bottom fade to next section */}
@@ -55,21 +55,11 @@ export default function HeroSection() {
 
           {/* ── Left: Text ─────────────────────────────────── */}
           <div>
-            <motion.p
-              className="section-label mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
+            <p className="section-label mb-6">
               Seit 1965 · Juwelier & Goldschmied
-            </motion.p>
+            </p>
 
-            <motion.h1
-              className="font-cormorant font-light leading-[1.05] mb-7"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-            >
+            <h1 className="font-cormorant font-light leading-[1.05] mb-7">
               <span className="block text-5xl sm:text-6xl xl:text-7xl text-cream">
                 Meisterhafte
               </span>
@@ -79,40 +69,25 @@ export default function HeroSection() {
               <span className="block text-5xl sm:text-6xl xl:text-7xl text-cream">
                 mit Tradition.
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              className="font-jost font-light text-[#999] text-base lg:text-lg leading-relaxed mb-10 max-w-md"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.65 }}
-            >
+            <p className="font-jost font-light text-[#999] text-base lg:text-lg leading-relaxed mb-10 max-w-md">
               Familiengeführt seit 1965. Drei Standorte in Wiesbaden und Mainz –
               für Schmuck, Uhren, Trauringe, Sonder&shy;anfertigungen und
               diskreten Goldankauf auf höchstem Niveau.
-            </motion.p>
+            </p>
 
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.82 }}
-            >
+            <div className="flex flex-wrap gap-4">
               <a href="#kollektionen" className="btn-gold">
                 Kollektionen entdecken
               </a>
               <a href="#goldankauf" className="btn-ghost">
                 Goldankauf anfragen
               </a>
-            </motion.div>
+            </div>
 
             {/* Stat strip */}
-            <motion.div
-              className="mt-12 flex gap-8 border-t border-[#1E1E1E] pt-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.1 }}
-            >
+            <div className="mt-12 flex gap-8 border-t border-[#1E1E1E] pt-8">
               {[
                 { value: '1965', label: 'Handwerk seit'       },
                 { value: '30+',  label: 'Jahre in Deutschland' },
@@ -123,15 +98,11 @@ export default function HeroSection() {
                   <p className="font-jost text-[0.65rem] text-[#666] tracking-wider uppercase mt-0.5">{label}</p>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* ── Right: Video ────────────────────────────────── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-          >
+          <div>
             {/* Transparentes Video (WebM VP9 mit Alpha-Kanal) */}
             <video
               ref={videoRef}
@@ -144,21 +115,18 @@ export default function HeroSection() {
             >
               <source src="/assets/video/hero.webm" type="video/webm" />
             </video>
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2] flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
         aria-hidden="true"
       >
         <span className="font-jost text-[0.6rem] tracking-widest uppercase text-[#555]">Entdecken</span>
         <div className="w-px h-10 bg-gradient-to-b from-[#C9A84C]/60 to-transparent" />
-      </motion.div>
+      </div>
     </section>
   )
 }
