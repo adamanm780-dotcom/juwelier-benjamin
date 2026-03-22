@@ -63,8 +63,7 @@ export default function HeroSection() {
           <div className="flex justify-center lg:justify-end flex-shrink-0">
             <ScrollFramePlayer
               frames={SIGME_FRAMES}
-              startOffset={0.45}
-              speed={2}
+              pxPerFrame={14}
               className="w-[220px] sm:w-[260px] lg:w-[300px] xl:w-[340px]"
               style={{ aspectRatio: '1244 / 1660' }}
             />
