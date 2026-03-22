@@ -8,9 +8,9 @@ const ScrollFramePlayer = dynamic(
   { ssr: false }
 )
 
-// 40 WebP-Frames mit Transparenz (1-indiziert, wie von ffmpeg ausgegeben)
+// 40 WebP-Frames (Megadigger, kein Transparenzhintergrund)
 const REPAIR_FRAMES = Array.from({ length: 40 }, (_, i) =>
-  `/assets/frames/repairs/frame_${String(i + 1).padStart(3, '0')}.webp`
+  `/assets/frames/megadigger/frame_${String(i + 1).padStart(3, '0')}.webp`
 )
 
 const SERVICES = [
@@ -120,7 +120,7 @@ export default function RepairsSection() {
             <ScrollFramePlayer
               frames={REPAIR_FRAMES}
               className="w-[260px] xl:w-[300px]"
-              style={{ aspectRatio: '1080 / 1442' }}
+              style={{ aspectRatio: '1080 / 1432' }}
               pxPerFrame={12}
             />
           </motion.div>
@@ -136,7 +136,7 @@ export default function RepairsSection() {
             <ScrollFramePlayer
               frames={REPAIR_FRAMES}
               className="w-full"
-              style={{ aspectRatio: '1080 / 1442' }}
+              style={{ aspectRatio: '1080 / 1432' }}
               pxPerFrame={12}
             />
           </motion.div>
