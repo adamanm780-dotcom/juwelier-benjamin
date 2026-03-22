@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Legend,
@@ -33,11 +33,11 @@ const THEMES = {
 }
 
 // ─── Custom Tooltip ───────────────────────────────────────────────────────────
-function CustomTooltip({ active, payload, label, metal }: {
+function CustomTooltip({ active, payload, label }: {
   active?:  boolean
   payload?: Array<{ name: string; value: number; color: string }>
   label?:   string
-  metal:    Metal
+  metal?:   Metal
 }) {
   if (!active || !payload?.length) return null
   const dateStr = label
@@ -76,7 +76,17 @@ export default function GoldPriceChart() {
   const [error, setError]               = useState<string | null>(null)
   const [currentPrice, setCurrentPrice] = useState<{ ankauf: number; verkauf: number } | null>(null)
 
+  // Cache pro Metal — verhindert neue Zufallsdaten bei Tab-Wechsel
+  type CacheEntry = { data: GoldPricePoint[]; currentPrice: { ankauf: number; verkauf: number } }
+  const cache = useRef<Partial<Record<Metal, CacheEntry>>>({})
+
   const load = useCallback(async (m: Metal) => {
+    if (cache.current[m]) {
+      setData(cache.current[m]!.data)
+      setCurrentPrice(cache.current[m]!.currentPrice)
+      setLoading(false)
+      return
+    }
     setLoading(true); setError(null)
     const adapter = m === 'gold' ? goldPriceAdapter : silverPriceAdapter
     try {
@@ -84,6 +94,7 @@ export default function GoldPriceChart() {
         adapter.fetchPriceHistory('7d'),
         adapter.fetchCurrentPrice(),
       ])
+      cache.current[m] = { data: history, currentPrice: current }
       setData(history)
       setCurrentPrice(current)
     } catch {
