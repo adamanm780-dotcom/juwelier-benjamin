@@ -86,6 +86,22 @@ export default function CollectionsSection() {
           </motion.p>
         </div>
 
+        {/* Hero-Video — transparent, zentriert zwischen Header und Grid */}
+        <motion.div
+          className="flex justify-center my-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <video
+            autoPlay muted loop playsInline preload="auto"
+            style={{ width: '260px', height: 'auto', aspectRatio: '1564 / 1080' }}
+          >
+            <source src="/assets/video/hero.webm" type="video/webm" />
+          </video>
+        </motion.div>
+
         {/* Grid */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
