@@ -4,11 +4,10 @@ import { useEffect, useRef } from 'react'
 import React from 'react'
 
 interface Props {
-  frames: string[]
-  className?: string
-  style?: React.CSSProperties
-  /** Pixel of scroll distance per frame step (default: 15) */
-  pxPerFrame?: number
+  frames:      string[]
+  className?:  string
+  style?:      React.CSSProperties
+  pxPerFrame?: number   // Scroll-Pixel pro Frame (default 15)
 }
 
 export default function ScrollFramePlayer({
@@ -17,33 +16,55 @@ export default function ScrollFramePlayer({
   style,
   pxPerFrame = 15,
 }: Props) {
-  const imgRef = useRef<HTMLImageElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    const img = imgRef.current
-    if (!img || frames.length === 0) return
+    const canvas = canvasRef.current
+    if (!canvas || frames.length === 0) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
-    // Alle Frames vorladen → Browser-Cache → sofortiger Wechsel ohne Flicker
-    const preloaded = frames.map(src => {
+    // Canvas-Auflösung auf natürliche Frame-Größe setzen (wird per CSS skaliert)
+    // Wir setzen die Größe erst wenn das erste Bild geladen ist
+    let canvasSized = false
+
+    // Alle Frames vorladen
+    const preloaded: HTMLImageElement[] = frames.map(src => {
       const el = new window.Image()
       el.src = src
       return el
     })
 
-    img.src = frames[0]
+    // Hilfsfunktion: Frame auf Canvas zeichnen
+    function drawFrame(idx: number) {
+      const img = preloaded[Math.max(0, Math.min(frames.length - 1, idx))]
+      if (!img || !ctx || !canvas) return
 
-    let framePos    = 0              // float 0 … frames.length-1
-    let lastScrollY = window.scrollY
-    let rafId       = 0
+      const draw = () => {
+        if (!canvasSized && img.naturalWidth > 0) {
+          canvas.width  = img.naturalWidth
+          canvas.height = img.naturalHeight
+          canvasSized = true
+        }
+        // Schwarzen Hintergrund zeichnen → kein weißer Flash
+        ctx.fillStyle = '#080808'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      }
 
-    function setFrame(pos: number) {
-      const idx = Math.max(0, Math.min(frames.length - 1, Math.round(pos)))
-      if (preloaded[idx]?.complete) {
-        img!.src = frames[idx]
+      if (img.complete && img.naturalWidth > 0) {
+        draw()
       } else {
-        preloaded[idx]?.addEventListener('load', () => { img!.src = frames[idx] }, { once: true })
+        img.addEventListener('load', draw, { once: true })
       }
     }
+
+    // Erstes Frame sofort anzeigen
+    drawFrame(0)
+
+    let framePos    = 0
+    let lastScrollY = window.scrollY
+    let rafId       = 0
 
     function tick() {
       const scrollY = window.scrollY
@@ -52,7 +73,7 @@ export default function ScrollFramePlayer({
 
       if (Math.abs(dy) > 0.1) {
         framePos = Math.max(0, Math.min(frames.length - 1, framePos + dy / pxPerFrame))
-        setFrame(framePos)
+        drawFrame(Math.round(framePos))
       }
 
       rafId = requestAnimationFrame(tick)
@@ -64,18 +85,10 @@ export default function ScrollFramePlayer({
 
   return (
     <div className={className} style={{ ...style, background: '#080808' }}>
-      <img
-        ref={imgRef}
-        src={frames[0]}
-        alt=""
-        loading="eager"
-        style={{
-          width: '100%', height: '100%',
-          objectFit: 'contain', display: 'block',
-          background: 'transparent',
-          // Verhindert weißen Flash zwischen Frames beim Laden
-          imageRendering: 'auto',
-        }}
+      <canvas
+        ref={canvasRef}
+        aria-hidden="true"
+        style={{ width: '100%', height: '100%', display: 'block' }}
       />
     </div>
   )
