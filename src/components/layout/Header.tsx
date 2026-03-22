@@ -4,15 +4,40 @@ import { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useCart } from '@/contexts/CartContext'
 
 const NAV_LINKS = [
   { href: '/ueber-uns',    label: 'Geschichte'    },
+  { href: '/shop',         label: 'Shop'          },
   { href: '/kollektionen', label: 'Kollektionen'  },
   { href: '/goldankauf',   label: 'Goldankauf'    },
   { href: '/reparaturen',  label: 'Reparaturen'   },
   { href: '/standorte',    label: 'Standorte'     },
   { href: '/kontakt',      label: 'Kontakt'       },
 ]
+
+// ─── Cart-Icon ────────────────────────────────────────────────────────────────
+function CartButton() {
+  const { totalItems, openCart } = useCart()
+  return (
+    <button
+      onClick={openCart}
+      className="relative w-10 h-10 flex items-center justify-center text-[#999] hover:text-gold transition-colors duration-300"
+      aria-label={`Warenkorb öffnen${totalItems > 0 ? ` (${totalItems} Artikel)` : ''}`}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
+        strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      {totalItems > 0 && (
+        <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center bg-[#C9A84C] text-black font-jost font-semibold text-[0.5rem] rounded-full px-1 leading-none">
+          {totalItems > 9 ? '9+' : totalItems}
+        </span>
+      )}
+    </button>
+  )
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -65,7 +90,7 @@ export default function Header() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-7" aria-label="Hauptnavigation">
             {NAV_LINKS.map(({ href, label }) => {
-              const active = pathname === href
+              const active = pathname === href || pathname.startsWith(href + '/')
               return (
                 <Link
                   key={href}
@@ -81,11 +106,15 @@ export default function Header() {
                 </Link>
               )
             })}
+            <CartButton />
             <Link href="/goldankauf" className="btn-gold text-[0.6rem] ml-2">
               Goldankauf
             </Link>
           </nav>
 
+          {/* Mobile: Cart + Hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+          <CartButton />
           {/* Mobile Hamburger */}
           <button
             className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 relative z-50"
@@ -97,6 +126,8 @@ export default function Header() {
             <span className={`block w-6 h-px bg-gold transition-all duration-300 ${menuOpen ? 'opacity-0 scale-x-0' : ''}`} />
             <span className={`block w-6 h-px bg-gold transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`} />
           </button>
+          </div>
+
         </div>
 
         {scrolled && (

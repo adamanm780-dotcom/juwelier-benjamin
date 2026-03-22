@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Jost } from 'next/font/google'
 import dynamic from 'next/dynamic'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import Providers from '@/components/layout/Providers'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -57,17 +58,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Fixed bubble background — läuft über alle Seiten durch */}
         <BubbleBackground />
 
-        {/* Sticky Header */}
-        <Header />
+        {/* Providers: CartContext + CartDrawer (client boundary) */}
+        <Providers>
+          {/* Sticky Header */}
+          <Header />
 
-        {/* Page Content — z-[1] stellt sicher dass Seiteninhalte über dem
-            fixed Canvas (z-index:0) des BubbleBackground liegen */}
-        <main className="relative z-[1]">
-          {children}
-        </main>
+          {/* Page Content — z-[1] stellt sicher dass Seiteninhalte über dem
+              fixed Canvas (z-index:0) des BubbleBackground liegen */}
+          <main className="relative z-[1]">
+            {children}
+          </main>
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
