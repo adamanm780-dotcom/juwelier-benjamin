@@ -63,13 +63,19 @@ export default function ScrollFramePlayer({
   }, [frames, pxPerFrame])
 
   return (
-    <div className={className} style={style}>
+    <div className={className} style={{ ...style, background: '#080808' }}>
       <img
         ref={imgRef}
         src={frames[0]}
         alt=""
         loading="eager"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+        style={{
+          width: '100%', height: '100%',
+          objectFit: 'contain', display: 'block',
+          background: 'transparent',
+          // Verhindert weißen Flash zwischen Frames beim Laden
+          imageRendering: 'auto',
+        }}
       />
     </div>
   )
