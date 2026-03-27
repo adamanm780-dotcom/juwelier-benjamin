@@ -1,45 +1,15 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { registerCollisionRect, unregisterCollisionRect } from '@/lib/collisionRects'
+import dynamic from 'next/dynamic'
+
+const ScrollFramePlayer = dynamic(() => import('@/components/ui/ScrollFramePlayer'), { ssr: false })
+
+const SIGME_FRAMES = Array.from({ length: 50 }, (_, i) =>
+  `/assets/frames/sigme/frame_${String(i + 1).padStart(3, '0')}.webp`
+)
 
 export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  // Autoplay nach Tab-Wechsel
-  useEffect(() => {
-    const v = videoRef.current; if (!v) return
-    const onVisible = () => {
-      if (!document.hidden && v.paused) v.play().catch(() => {})
-    }
-    document.addEventListener('visibilitychange', onVisible)
-    return () => document.removeEventListener('visibilitychange', onVisible)
-  }, [])
-
-  // Video-Rect in Kollisions-Registry eintragen
-  useEffect(() => {
-    const v = videoRef.current; if (!v) return
-
-    const update = () => {
-      const r = v.getBoundingClientRect()
-      registerCollisionRect('hero-video', { x: r.left, y: r.top, w: r.width, h: r.height })
-    }
-
-    update()
-    const ro = new ResizeObserver(update)
-    ro.observe(v)
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update, { passive: true })
-
-    return () => {
-      ro.disconnect()
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-      unregisterCollisionRect('hero-video')
-    }
-  }, [])
-
   return (
     <section
       id="hero"
@@ -121,25 +91,22 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* ── Right: Video ────────────────────────────────── */}
+          {/* ── Right: Tresor Scroll-Animation ──────────────── */}
           <motion.div
+            className="flex justify-center lg:justify-end flex-shrink-0"
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ mixBlendMode: 'screen' }}
           >
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '1564 / 1080' }}
-            >
-              <source src="/assets/video/hero.webm" type="video/webm" />
-              <source src="/assets/video/hero.mp4"  type="video/mp4" />
-            </video>
+            <ScrollFramePlayer
+              frames={SIGME_FRAMES}
+              pxPerFrame={7}
+              className="w-[280px] sm:w-[340px] lg:w-[400px] xl:w-[460px]"
+              style={{ aspectRatio: '1244 / 1660' }}
+            />
           </motion.div>
+
         </div>
       </div>
 
