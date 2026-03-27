@@ -12,8 +12,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#080808]"
-      style={{ isolation: 'isolate' }}
+      className="relative min-h-screen flex items-center overflow-hidden"
       aria-label="Hero – Juwelier Benjamin"
     >
       {/* Bottom fade */}

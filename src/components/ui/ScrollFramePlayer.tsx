@@ -46,9 +46,8 @@ export default function ScrollFramePlayer({
           canvas.height = img.naturalHeight
           canvasSized = true
         }
-        // Schwarzen Hintergrund zeichnen → kein weißer Flash
-        ctx.fillStyle = '#080808'
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        // Kein Hintergrund zeichnen → transparenter Canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
       }
 
@@ -84,7 +83,7 @@ export default function ScrollFramePlayer({
   }, [frames, pxPerFrame])
 
   return (
-    <div className={className} style={{ ...style, background: '#080808' }}>
+    <div className={className} style={{ ...style }}>
       <canvas
         ref={canvasRef}
         aria-hidden="true"

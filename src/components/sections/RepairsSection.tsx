@@ -88,7 +88,7 @@ const SERVICES = [
 
 export default function RepairsSection() {
   return (
-    <section id="reparaturen" className="relative z-10 section-py bg-[#080808]/85">
+    <section id="reparaturen" className="relative z-10 section-py">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Header — 3 Spalten: Heading | Scroll-Animation | Badge */}
