@@ -32,11 +32,11 @@ export default function LocationsSection() {
         </motion.div>
 
         {/* Location cards */}
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="flex justify-center">
           {locations.map((loc, i) => (
             <motion.article
               key={loc.id}
-              className={`relative overflow-hidden luxury-card group ${
+              className={`relative overflow-hidden luxury-card group w-full max-w-md ${
                 loc.goldankauf ? 'border-[#C9A84C]/25' : ''
               }`}
               initial={{ opacity: 0, y: 20 }}
