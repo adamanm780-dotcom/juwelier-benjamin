@@ -97,11 +97,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ mixBlendMode: 'screen' }}
           >
             <ScrollFramePlayer
               frames={SIGME_FRAMES}
               pxPerFrame={7}
+              blendMode="screen"
               className="w-[280px] sm:w-[340px] lg:w-[400px] xl:w-[460px]"
               style={{ aspectRatio: '1244 / 1660' }}
             />

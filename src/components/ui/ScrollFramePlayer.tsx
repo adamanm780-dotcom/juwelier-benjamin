@@ -4,10 +4,11 @@ import { useEffect, useRef } from 'react'
 import React from 'react'
 
 interface Props {
-  frames:      string[]
-  className?:  string
-  style?:      React.CSSProperties
-  pxPerFrame?: number   // Scroll-Pixel pro Frame (default 15)
+  frames:       string[]
+  className?:   string
+  style?:       React.CSSProperties
+  pxPerFrame?:  number             // Scroll-Pixel pro Frame (default 15)
+  blendMode?:   React.CSSProperties['mixBlendMode']  // z.B. 'screen' für Transparenz
 }
 
 export default function ScrollFramePlayer({
@@ -15,6 +16,7 @@ export default function ScrollFramePlayer({
   className = '',
   style,
   pxPerFrame = 15,
+  blendMode,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -87,7 +89,7 @@ export default function ScrollFramePlayer({
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', display: 'block' }}
+        style={{ width: '100%', height: '100%', display: 'block', mixBlendMode: blendMode }}
       />
     </div>
   )
