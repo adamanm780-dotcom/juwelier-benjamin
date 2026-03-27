@@ -4,7 +4,7 @@ import ContactSection from '@/components/sections/ContactSection'
 
 export const metadata: Metadata = {
   title: 'Kontakt & Beratung',
-  description: 'Kontaktieren Sie Juwelier Benjamin — Terminvereinbarung, Goldankauf-Anfrage oder persönliche Beratung in Wiesbaden und Mainz.',
+  description: 'Kontaktieren Sie Juwelier Benjamin — Terminvereinbarung, Goldankauf-Anfrage oder persönliche Beratung in Wiesbaden, Langgasse 26.',
 }
 
 export default function KontaktPage() {

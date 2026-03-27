@@ -205,7 +205,7 @@ export default function ShopPage() {
           </h2>
           <p className="font-jost text-sm text-[#666] max-w-md mx-auto leading-relaxed mb-8">
             Sonderanfertigungen nach Ihren Wünschen – in Gold, Silber oder Platin.
-            Besuchen Sie uns in Wiesbaden oder Mainz.
+            Besuchen Sie uns in der Wiesbadener Altstadt, Langgasse 26.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <a href="/kontakt" className="btn-gold">Termin vereinbaren</a>

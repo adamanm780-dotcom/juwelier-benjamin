@@ -6,7 +6,7 @@ import WatchesSection      from '@/components/sections/WatchesSection'
 
 export const metadata: Metadata = {
   title: 'Kollektionen',
-  description: 'Schmuck, Trauringe, Sonderanfertigungen und Luxusuhren bei Juwelier Benjamin in Wiesbaden und Mainz.',
+  description: 'Schmuck, Trauringe, Sonderanfertigungen und Luxusuhren bei Juwelier Benjamin in Wiesbaden – Langgasse 26.',
 }
 
 export default function KollektionenPage() {

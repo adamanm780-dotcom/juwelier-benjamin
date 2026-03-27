@@ -100,7 +100,7 @@ export default function AboutSection() {
               Kundenwünsche auf höchstem Qualitätsniveau zu erfüllen.
             </p>
             <p className="font-jost text-[#aaa] leading-relaxed text-[0.95rem]">
-              Seither ist Juwelier Benjamin auf drei Standorte in Wiesbaden und Mainz gewachsen – stets
+              Seither ist Juwelier Benjamin in der Wiesbadener Altstadt verwurzelt – stets
               geführt von Familienangehörigen, stets mit derselben handwerklichen Sorgfalt. Unikatschmuck
               wird im Hause Benjamin weiterhin ausschließlich in Edelmaterialien gefertigt; jedes Stück
               kann nach Jahren zu einem vollständigen Ensemble ergänzt werden.

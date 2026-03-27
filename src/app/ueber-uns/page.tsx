@@ -5,7 +5,7 @@ import TimelineSection from '@/components/sections/TimelineSection'
 
 export const metadata: Metadata = {
   title: 'Geschichte & Tradition',
-  description: 'Die Geschichte von Juwelier Benjamin — seit 1965 im Edelmetallhandwerk, seit 1995 in Wiesbaden und Mainz.',
+  description: 'Die Geschichte von Juwelier Benjamin — seit 1965 im Edelmetallhandwerk, seit 1995 in Wiesbaden.',
 }
 
 export default function UeberUnsPage() {
@@ -14,7 +14,7 @@ export default function UeberUnsPage() {
       <SubPageHeader
         overline="Seit 1965"
         title="Geschichte & Tradition"
-        subtitle="Von den Anfängen im Ausland bis zu den Filialen in Wiesbaden und Mainz — eine Familiengeschichte aus Leidenschaft für Gold und Handwerk."
+        subtitle="Von den Anfängen im Ausland bis zur Filiale in der Wiesbadener Altstadt — eine Familiengeschichte aus Leidenschaft für Gold und Handwerk."
       />
       <AboutSection />
       <TimelineSection />

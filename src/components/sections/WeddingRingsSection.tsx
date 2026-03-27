@@ -99,7 +99,7 @@ export default function WeddingRingsSection() {
                   „Für die Ewigkeit."
                 </p>
                 <p className="font-jost text-xs text-[#666] mt-2 tracking-widest uppercase">
-                  Handgefertigt · Wiesbaden & Mainz
+                  Handgefertigt · Wiesbaden Altstadt
                 </p>
               </div>
             </div>

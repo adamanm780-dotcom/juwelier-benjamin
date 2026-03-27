@@ -42,9 +42,9 @@ const TEASERS = [
   },
   {
     href: '/standorte',
-    overline: 'Wiesbaden & Mainz',
+    overline: 'Wiesbaden Altstadt',
     title: 'Standorte',
-    text: 'Besuchen Sie uns in der Wellritzstraße oder Langgasse in Wiesbaden, oder in der Lotharstraße in Mainz.',
+    text: 'Besuchen Sie uns in der Langgasse 26 in der Wiesbadener Altstadt.',
     cta: 'Standorte finden',
   },
 ]

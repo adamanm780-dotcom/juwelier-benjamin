@@ -63,9 +63,7 @@ export default function ContactSection() {
 
               <div className="space-y-5">
                 {[
-                  { city: 'Wiesbaden', street: 'Wellritzstr. 35',  zip: '65183', specialty: 'Schmuck · Uhren · Reparaturen' },
-                  { city: 'Wiesbaden', street: 'Langgasse 26',     zip: '65183', specialty: 'Trauringe · Sonderanfertigungen · Goldankauf' },
-                  { city: 'Mainz',     street: 'Lotharstr. 15',    zip: '55116', specialty: 'Goldankauf · Luxusuhren · Juwelen' },
+                  { city: 'Wiesbaden', street: 'Langgasse 26', zip: '65183', specialty: 'Trauringe · Sonderanfertigungen · Goldankauf' },
                 ].map(loc => (
                   <div key={loc.street} className="border-b border-[#1A1A1A] pb-5 last:border-0 last:pb-0">
                     <p className="font-jost text-[0.6rem] text-[#555] tracking-widest uppercase mb-1">{loc.city}</p>

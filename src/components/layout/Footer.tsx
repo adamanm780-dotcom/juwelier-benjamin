@@ -10,9 +10,7 @@ const footerLinks = {
     { label: 'Reparaturen',          href: '#reparaturen'  },
   ],
   'Standorte': [
-    { label: 'Wiesbaden – Wellritz', href: '#standorte'   },
-    { label: 'Wiesbaden – Langgasse',href: '#standorte'   },
-    { label: 'Mainz – Lotharstr.',   href: '#standorte'   },
+    { label: 'Wiesbaden – Langgasse', href: '/standorte' },
   ],
   'Unternehmen': [
     { label: 'Geschichte',    href: '#ueber-uns'   },
@@ -65,7 +63,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 text-[#555] font-jost text-xs">
                 <span className="text-gold">◆</span>
-                <span>3 Standorte in Wiesbaden & Mainz</span>
+                <span>Wiesbaden Altstadt – Langgasse 26</span>
               </div>
               <div className="flex items-center gap-2 text-[#555] font-jost text-xs">
                 <span className="text-gold">◆</span>

@@ -4,16 +4,16 @@ import LocationsSection from '@/components/sections/LocationsSection'
 
 export const metadata: Metadata = {
   title: 'Standorte',
-  description: 'Juwelier Benjamin in Wiesbaden (Wellritzstraße, Langgasse) und Mainz (Lotharstraße). Besuchen Sie uns persönlich.',
+  description: 'Juwelier Benjamin in der Wiesbadener Altstadt – Langgasse 26. Besuchen Sie uns persönlich.',
 }
 
 export default function StandortePage() {
   return (
     <>
       <SubPageHeader
-        overline="Wiesbaden & Mainz"
+        overline="Wiesbaden Altstadt"
         title="Standorte"
-        subtitle="Besuchen Sie uns persönlich — in der Wellritzstraße oder Langgasse in Wiesbaden, oder in der Lotharstraße in Mainz."
+        subtitle="Besuchen Sie uns persönlich — in der Langgasse 26 in der Wiesbadener Altstadt."
       />
       <LocationsSection />
     </>

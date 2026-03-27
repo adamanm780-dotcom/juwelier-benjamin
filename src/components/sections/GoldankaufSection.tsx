@@ -132,17 +132,17 @@ export default function GoldankaufSection() {
               </div>
             </div>
 
-            {/* Mainz highlight */}
+            {/* Wiesbaden highlight */}
             <div className="p-6 bg-[rgba(201,168,76,0.06)] border border-[#C9A84C]/25 relative overflow-hidden">
               <div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/50 to-transparent" />
-              <p className="section-label mb-3 text-gold">Goldankauf Mainz</p>
-              <p className="font-cormorant text-xl text-cream font-light mb-1">Juwelier Benjamin</p>
-              <p className="font-jost text-sm text-[#999] mb-4">Lotharstr. 15 · 55116 Mainz</p>
+              <p className="section-label mb-3 text-gold">Goldankauf Wiesbaden</p>
+              <p className="font-cormorant text-xl text-cream font-light mb-1">Juwelier Benjamin Altstadt</p>
+              <p className="font-jost text-sm text-[#999] mb-4">Langgasse 26 · 65183 Wiesbaden</p>
               <p className="font-jost text-xs text-[#777] leading-relaxed mb-5">
-                Unser Mainzer Kompetenzzentrum für Goldankauf auf 130 m² –
+                Goldankauf in der Wiesbadener Altstadt –
                 professionelle Bewertung, faire Preise, diskreter Service.
               </p>
-              <a href="#standorte" className="btn-ghost text-[0.6rem]">Standort anzeigen</a>
+              <a href="/standorte" className="btn-ghost text-[0.6rem]">Standort anzeigen</a>
             </div>
 
             {/* ── 3D-Modell Umbro ──────────────────────────────── */}

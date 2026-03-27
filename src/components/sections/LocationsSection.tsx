@@ -21,13 +21,12 @@ export default function LocationsSection() {
           <p className="section-label mb-5">Unsere Standorte</p>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <h2 className="font-cormorant text-5xl sm:text-6xl font-light text-cream leading-[1.05]">
-              Wiesbaden & Mainz –
+              Wiesbaden Altstadt –
               <br />
               <em className="text-gold-gradient not-italic">nah bei Ihnen.</em>
             </h2>
             <p className="font-jost text-sm text-[#777] max-w-xs leading-relaxed">
-              Drei Adressen, eine Familie, ein Versprechen. Besuchen Sie uns
-              persönlich für Beratung, Bewertung und Besichtigung.
+              Besuchen Sie uns persönlich in der Langgasse 26 für Beratung, Bewertung und Besichtigung.
             </p>
           </div>
         </motion.div>
@@ -117,7 +116,7 @@ export default function LocationsSection() {
           ))}
         </div>
 
-        {/* Mainz Goldankauf highlight banner */}
+        {/* Wiesbaden Goldankauf highlight banner */}
         <motion.div
           className="mt-8 p-7 lg:p-8 border border-[#C9A84C]/25 bg-[rgba(201,168,76,0.04)] relative overflow-hidden"
           initial={{ opacity: 0, y: 12 }}
@@ -128,16 +127,16 @@ export default function LocationsSection() {
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/40 to-transparent" />
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
-              <p className="section-label mb-2 text-gold">Goldankauf Mainz by Juwelier Benjamin</p>
+              <p className="section-label mb-2 text-gold">Goldankauf Wiesbaden by Juwelier Benjamin</p>
               <p className="font-cormorant text-2xl text-cream font-light">
-                Lotharstr. 15 · 55116 Mainz
+                Langgasse 26 · 65183 Wiesbaden
               </p>
               <p className="font-jost text-sm text-[#888] mt-1">
-                Spezialisiertes Kompetenzzentrum für Gold-, Silber- und Luxusuhr-Ankauf
+                Goldankauf, Trauringe, Sonderanfertigungen und handwerkliche Kunst
               </p>
             </div>
             <a
-              href={`https://maps.google.com/?q=${encodeURIComponent('Lotharstraße 15, 55116 Mainz')}`}
+              href={`https://maps.google.com/?q=${encodeURIComponent('Langgasse 26, 65183 Wiesbaden')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold flex-shrink-0"

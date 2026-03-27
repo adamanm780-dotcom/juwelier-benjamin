@@ -33,7 +33,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="font-jost font-light text-[#999] text-base lg:text-lg leading-relaxed mb-10 max-w-md">
-              Familiengeführt seit 1965. Drei Standorte in Wiesbaden und Mainz –
+              Familiengeführt seit 1965. In der Wiesbadener Altstadt –
               für Schmuck, Uhren, Trauringe, Sonder&shy;anfertigungen und
               diskreten Goldankauf auf höchstem Niveau.
             </p>

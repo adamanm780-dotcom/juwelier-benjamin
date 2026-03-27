@@ -33,16 +33,16 @@ export const metadata: Metadata = {
     template: '%s | Juwelier Benjamin',
   },
   description:
-    'Familiengeführter Juwelier in Wiesbaden und Mainz seit 1965. Goldankauf, Schmuck, Trauringe, Luxusuhren, Sonderanfertigungen und Reparaturen auf höchstem Niveau.',
+    'Familiengeführter Juwelier in Wiesbaden seit 1965. Goldankauf, Schmuck, Trauringe, Luxusuhren, Sonderanfertigungen und Reparaturen auf höchstem Niveau.',
   keywords: [
-    'Juwelier Wiesbaden', 'Juwelier Mainz', 'Goldankauf Mainz', 'Goldankauf Wiesbaden',
+    'Juwelier Wiesbaden', 'Goldankauf Wiesbaden', 'Juwelier Langgasse',
     'Trauringe Wiesbaden', 'Schmuck Wiesbaden', 'Luxusuhren', 'Goldankauf',
     'Silberankauf', 'Sonderanfertigung Schmuck', 'Juwelier Benjamin',
   ],
   openGraph: {
     type: 'website', locale: 'de_DE', siteName: 'Juwelier Benjamin',
     title: 'Juwelier Benjamin – Gold, Schmuck & Uhren seit 1965',
-    description: 'Familiengeführter Juwelier in Wiesbaden und Mainz.',
+    description: 'Familiengeführter Juwelier in Wiesbaden – Langgasse 26.',
   },
   robots: { index: true, follow: true },
 }
