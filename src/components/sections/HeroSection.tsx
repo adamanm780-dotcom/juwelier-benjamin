@@ -4,16 +4,15 @@ import dynamic from 'next/dynamic'
 
 const ScrollFramePlayer = dynamic(() => import('@/components/ui/ScrollFramePlayer'), { ssr: false })
 
-const SIGME_FRAMES = Array.from({ length: 50 }, (_, i) =>
-  `/assets/frames/sigme/frame_${String(i + 1).padStart(3, '0')}.webp`
+const REPAIR_FRAMES = Array.from({ length: 40 }, (_, i) =>
+  `/assets/frames/repairs/frame_${String(i + 1).padStart(3, '0')}.webp`
 )
 
 export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#080808]"
-      style={{ isolation: 'isolate' }}
+      className="relative min-h-screen flex items-center overflow-hidden"
       aria-label="Hero – Juwelier Benjamin"
     >
       {/* Bottom fade */}
@@ -58,13 +57,13 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* ── Scroll-Frame-Animation ────────────────────── */}
+          {/* ── Scroll-Frame-Animation (repairs frames, echte Transparenz) ── */}
           <div className="flex justify-center lg:justify-end flex-shrink-0">
             <ScrollFramePlayer
-              frames={SIGME_FRAMES}
+              frames={REPAIR_FRAMES}
               pxPerFrame={7}
               className="w-[280px] sm:w-[340px] lg:w-[400px] xl:w-[460px]"
-              style={{ aspectRatio: '1244 / 1660' }}
+              style={{ aspectRatio: '1080 / 1442' }}
             />
           </div>
 
